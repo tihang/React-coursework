@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
 @import "reset";
+@import "billsapp";
+
+ 
 
 
 
@@ -40,9 +43,6 @@ h1 {
   font-size: 50px;
 }
 
-.container{
-  padding-top: 100px;
-}
 
 .home {
   height: 100%;
@@ -142,10 +142,10 @@ h1 {
     color: red;
     display: inline;
   }
-
-  // .active{
-  //   color: green;
-  // }
 }
+
+
+
+
 
 

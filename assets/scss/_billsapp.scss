@@ -1,0 +1,281 @@
+$bills-gradient : linear-gradient(90deg, #36d1dc 0%, #5b86e5 100%);
+
+#bills-app {
+    background: black;
+    background-color: #8EC5FC;
+    background-image: $bills-gradient;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  
+    header{
+      display: flex;
+      background: $bills-gradient;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      h2{
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: white;
+      }
+    }
+
+  #all-bills{
+      position: relative;   
+      z-index: 3;
+      height: calc(100vh - 90px);
+      overflow: scroll;
+  
+    .container{
+      margin: auto;
+      max-width: 900px;
+      width: 100%;
+      padding: 50px 30px;
+    }
+  
+    .total-bills{
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+        .bills-text{
+          font-size: 1.5rem;
+        }
+      
+        .bills-number{
+          font-size: 1.4rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 300;
+        }
+    }
+  
+    .bills-list{
+      background: white;
+      border-radius: 10px;
+      margin-top: 20px;
+      -webkit-box-shadow: 13px 10px 30px -1px rgba(0,0,0,0.18);
+      -moz-box-shadow: 13px 10px 30px -1px rgba(0,0,0,0.18);
+      box-shadow: 13px 10px 30px -1px rgba(0,0,0,0.18);
+      overflow: scroll;
+  
+      .bill{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #e8e8e8;
+        padding: 20px 20px;
+        &:last-child{
+          border: none;
+        }
+  
+        .company{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+            .logo{
+                img{
+                  width: 40px;
+                  border-radius: 50%;
+                  height: 40px;
+                }
+            }
+            .title{
+              font-size: 1.1rem;
+              font-weight: 500;
+              margin-left: 20px;
+              color: grey;
+              text-transform: capitalize;
+            }
+        }
+          .price{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(138, 129, 129);
+          }
+      }
+     }
+  }
+  .content-background{
+    background: #e8e8e8;
+    height: 77vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+}
+
+
+
+  #floating-menu{
+    background: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    width: 100%;
+    -webkit-box-shadow: 13px -10px 30px -1px rgba(0,0,0,0.18);
+    -moz-box-shadow: 13px -10px 30px -1px rgba(0,0,0,0.18);
+    box-shadow: 13px -10px 30px -1px rgba(0,0,0,0.18);
+
+    .link{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all ease-in-out .4s;
+      &:hover{
+        background: $bills-gradient;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        .far::before, .fas::before{
+            background: $bills-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        &:last-child{      
+            .far::before, .fas::before{
+                background: white;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+          }
+      }
+      &:last-child{      
+        .far::before, .fas::before{
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.2rem;
+        }
+      }
+    }
+    
+    .icon{
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #817b7b;
+      transition: all ease-in-out .4s;
+    }
+    
+    .text{
+      font-size: .8rem;
+      color: #817b7b;
+      transition: all ease-in-out .4s;
+    }
+
+    .add-button{
+        background: $bills-gradient;
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: -1px;
+        }
+    }
+  }
+}
+
+#add-bill{
+    position: absolute;
+    top: 0;
+    background: $bills-gradient;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 5;
+    transform: translate3d(100%, 0 , 0);
+    transition: transform .4s ease-in-out;
+    &.active{
+        transform: translate3d(0, 0 , 0);
+    }
+
+    .container{
+        padding: 0 20px;
+
+    }
+
+    h2{
+        font-size: 2rem;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .form-group{
+        margin: 0 0 1.8rem 0;
+    }
+
+    label{
+        display: block;
+        color: white;
+        font-size: .8rem;
+        margin-bottom: 10px;
+        font-weight: 700;
+        letter-spacing: .1rem;
+    }
+
+    input{
+        display: block;
+        background: transparent;
+        border: 1px solid white;
+        font-size: 1.1rem;
+        padding: 10px;
+        width: 100%;
+        &:focus{
+            outline: 0;
+        }
+    }
+
+    button{
+        background: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    }
+
+}
+
+
+@media only screen and (min-width: 600px){
+    #app{
+        // background: black;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #bills-app{
+        width: 414px;
+        height: 896px;
+        border-radius: 20px;
+
+        header{
+          background: $bills-gradient;
+        
+          h2{
+            color: white;
+          }
+        }
+    }
+}

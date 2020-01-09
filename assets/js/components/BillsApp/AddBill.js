@@ -5,7 +5,7 @@ export default class AddBill extends Component {
 		super();
 		this.state = {
 			business_name: '',
-			price: 0
+			price: ''
 		};
 	}
 
@@ -29,6 +29,10 @@ export default class AddBill extends Component {
 	handleSubmit = () => {
 		event.preventDefault();
 		this.props.saveBill(this.state);
+		this.setState({
+			business_name: '',
+			price: ''
+		});
 	};
 
 	render() {

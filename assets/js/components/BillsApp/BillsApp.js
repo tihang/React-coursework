@@ -10,7 +10,8 @@ export default class BillsApp extends Component {
 		super();
 		this.state = {
 			addBillOpen: false,
-			allBills: []
+			allBills: [],
+			totalAmount: 0
 		};
 	}
 
@@ -24,17 +25,25 @@ export default class BillsApp extends Component {
 		const newBills = update(this.state.allBills, {
 			$push: [bill]
 		});
-		this.setState({
-			allBills: newBills,
-			addBillOpen: false
-		});
+		const total = this.state.totalAmount + parseFloat(bill.price);
+		this.setState(
+			{
+				allBills: newBills,
+				addBillOpen: false,
+				totalAmount: total
+			},
+			() => console.log(this.state)
+		);
 	};
 
 	render() {
 		return (
 			<div id="bills-app">
 				<Header />
-				<AllBills currentBills={this.state.allBills} />
+				<AllBills
+					currentBills={this.state.allBills}
+					totalAmount={this.state.totalAmount}
+				/>
 				<AddBill
 					saveBill={this.saveBill}
 					addBillOpen={this.state.addBillOpen}
